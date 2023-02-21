@@ -1,0 +1,24 @@
+import json
+import spacy
+
+nlp = spacy.load("en_core_web_md")  # You may need to install this model first
+
+def parse_intents_keywords(input_file, output_file):
+    # Load the input file
+    with open(input_file, "r") as f:
+        intents = json.load(f)
+
+    # Parse the keywords for each intent
+    for intent_name, keywords in intents.items():
+        lemmatized_keywords = []
+        for keyword in keywords:
+            doc = nlp(keyword)
+            lemmas = [token.lemma_.lower() for token in doc]
+            lemmatized_keywords.extend(lemmas)
+        intents[intent_name] = lemmatized_keywords
+
+    # Write the results to the output file
+    with open(output_file, "w") as f:
+        json.dump(intents, f, indent=2)
+
+parse_intents_keywords("intents.json", "output.json")

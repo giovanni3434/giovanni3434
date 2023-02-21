@@ -1,0 +1,29 @@
+import openai
+import json
+
+openai.api_key = "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"
+
+conversation_history = []
+while True:
+    user_input = input("User: ")
+    if user_input == "q":
+        break
+    conversation_history.append(user_input)
+
+    context = " ".join(conversation_history[-int(len(conversation_history)*0.3):]) # here you pick last 30% of conversation as context
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=f"{context}",
+        temperature=0.5,
+        max_tokens=60,
+        top_p=1,
+        frequency_penalty=0.5,
+        presence_penalty=0,
+    )
+
+    print("Sbott: " + response["choices"][0]["text"])
+
+    # Saving conversation to a file
+    with open("conversation_history.json", "w") as f:
+        json.dump(conversation_history, f)
+

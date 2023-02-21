@@ -1,0 +1,109 @@
+import re
+import json
+import random
+import spacy
+import transformers
+import openai
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
+
+# access to openai key
+openai.api_key = "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"
+
+class SolarSalesBot:
+    def __init__(self):
+        with open('output.json', 'r') as f1, open('prompts.json', 'r') as f2:
+            output, prompts = json.load(f1), json.load(f2)
+
+        # Extract the data from the JSON files (output.json , prompts.json)
+        self.output = {intent_name: keywords for intent_name,
+                        keywords in output.items()}
+        self.solar_energy_prompt = prompts["solar_energy_prompts"]
+        
+        self.negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
+        self.exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later")
+        self.random_questions = ("Why are you interested in solar? ", "Tell me more about your interests in solar, benefits, tech, etc ")
+
+        # Load the GPT-2 model and tokenizer
+        self.model = GPT2LMHeadModel.from_pretrained('gpt2')
+        self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+
+    def greet(self):
+        name = input("Hi, what's your name?")
+        will_help = input(f"Hi {name}, I'm Sbott. I'm your solar consultant. Do you need help to go Solar?")
+        if will_help.lower() in self.negative_responses or will_help.lower() in self.exit_commands:
+            print("Ok, have a nice day!")
+            return
+
+        is_homeowner = input("Are you a homeowner? ").lower()
+        if not re.search(r'(?:yes|y(?:eah)?)', is_homeowner):
+            print("We are sorry, you broke fuck!")
+            return
+        
+        #self.solar_data()
+        self.chat()
+
+    def make_exit(self, reply):
+        for exit_command in self.exit_commands:
+            if reply == exit_command:
+                print("Ok, have a nice day!")
+                return True
+        return False
+
+    def chat(self):
+        reply = input(random.choice(self.random_questions)).lower()
+        while not self.make_exit(reply):
+            reply = input(self.match_reply(reply))
+
+    def no_match(self):
+        print("It is interesting you are mentioning that, but how about we stick with solar and save you money?")
+        return self.chat()
+
+    def match_reply(self, reply):
+        # Load the spaCy model lg (we can use model md too)
+        nlp = spacy.load("en_core_web_lg")
+        # Parse the user's input
+        doc = nlp(reply)
+
+        # Read the responses from the responses.json file
+        with open("responses.json", "r") as f:
+            responses = json.load(f)
+
+         # Initialize variables to keep track of the most similar response and the highest number of matching keywords
+        most_similar_response = None
+        highest_keyword_count = 0
+
+        # Loop through the output and check the number of keywords found in the parsed input
+        for intent_name, keywords in self.output.items():
+            keyword_count = 0
+            for keyword in keywords:
+                if keyword in [token.lemma_ for token in doc]:
+                    keyword_count += 1
+            highest_keyword_count = max(keyword_count, highest_keyword_count)
+            if keyword_count == highest_keyword_count:
+                most_similar_response = responses[intent_name]
+        
+        if highest_keyword_count >= 2 and most_similar_response is not None:
+            print("Intent response")
+            print(highest_keyword_count)
+            print([token.lemma_ for token in doc])
+            return most_similar_response
+        
+        # if no similarity found generate gpt2 answer
+        if highest_keyword_count == 1 and most_similar_response is not None: 
+            print("Similarity response generated gpt2")
+            response = self.generate_response(most_similar_response)
+            return response
+
+        #if can't do it call the no match function 
+        if highest_keyword_count == 0:
+            response = self.no_match()
+            return response
+    
+    # Use the GPT-2 model to generate a response using the prompts file
+    def generate_response(self, reply):
+        message = openai.Completion.create(
+            engine="text-davinci-002", prompt=f"{reply}\n{self.solar_energy_prompt}", max_tokens=250, n=1, stop=None, temperature=0.5).choices[0].text
+        return message
+
+Chatbot = SolarSalesBot()
+Chatbot.greet()

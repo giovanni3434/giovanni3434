@@ -1,0 +1,150 @@
+import sys
+import re
+import json
+import spacy
+import openai
+
+#openai_secret_manager, use it one day to store the key
+
+# access to openai key
+openai.api_key = "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"
+
+class SolarSalesBot:
+    def __init__(self):
+        with open('output.json', 'r') as f1:
+            output = json.load(f1)
+
+        # Extract the data from the JSON files (output.json)
+        self.output = {intent_name: keywords for intent_name,
+                        keywords in output.items()}
+        self.negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
+        self.exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later")
+        self.conversation = []
+        self.save_conversation()
+
+    def save_conversation(self):
+        with open('conversation.json', 'w') as fp:
+            json.dump(self.conversation, fp)
+
+    def greet(self):
+        name = input("Hi, what's your name?")
+        self.conversation.append({'bot': 'Hi, what\'s your name?','user': name})
+        will_help = input(f"Hi {name}, I'm Sbott. I'm your solar consultant. Do you need help to go Solar?")
+        self.conversation.append({'bot': f"Hi {name}, I'm Sbott. I'm your solar consultant. Do you need help to go Solar?",'user': will_help})
+        if will_help.lower() in self.negative_responses or will_help.lower() in self.exit_commands:
+            print("Ok, have a nice day!")
+            self.save_conversation()
+            return
+        
+        is_homeowner = input("Are you a homeowner? ").lower()
+        self.conversation.append({'bot': 'Are you a homeowner?','user': is_homeowner})
+        if not re.search(r'(?:yes|y(?:eah)?)', is_homeowner):
+            print("We are sorry, you broke fuck!")
+            self.save_conversation()
+            return
+        
+        #self.solar_data()
+        self.chat()
+
+    def make_exit(self, reply):
+        for exit_command in self.exit_commands:
+            if reply == exit_command:
+                print("Ok, have a nice day!")
+                return True
+        return False
+        
+    def chat(self):
+        with open("questions.json", "r") as f:
+            questions = json.load(f)
+        bill_upload_questions = questions["bill_upload_questions"]
+        # Initialize the counter variable
+        i = 0
+        reply = input(bill_upload_questions[i]).lower()
+        while not self.make_exit(reply):
+            response, ask_new_question = self.match_reply(reply)
+            print(response)
+            # Append the user's input and the bot's response to the conversation list
+            self.conversation.append({'bot': bill_upload_questions[i], 'user': reply })
+            self.conversation.append({'bot':response})
+            self.save_conversation()
+            if ask_new_question:
+                i += 1  # Increment the counter
+                # Check if we have reached the end of the list
+                if i == len(bill_upload_questions):
+                    i = 0  # Reset the counter
+            reply = input(bill_upload_questions[i]).lower()
+            
+    def no_match(self):
+        reply = input("It is interesting you are mentioning that, but how about we stick with solar and save you money?").lower()
+        self.conversation.append({'bot': "It is interesting you are mentioning that, but how about we stick with solar and save you money?",'user': reply})
+        if reply.lower() in self.exit_commands:
+            print("Ok, have a nice day!")
+            sys.exit()
+        self.save_conversation()
+        return self.chat()
+
+    def match_reply(self, reply):
+        # Load the spaCy model lg (we can use model md too)
+        nlp = spacy.load("en_core_web_lg")
+        # Parse the user's input
+        doc = nlp(reply)
+
+        # Read the responses from the responses.json file
+        with open("responses.json", "r") as f:
+            responses = json.load(f)
+
+        if reply.lower() in self.exit_commands:
+            print("Ok, have a nice day!")
+            sys.exit()
+
+        # Initialize variables to keep track of the most similar response and the highest number of matching keywords
+        most_similar_response = None
+        highest_keyword_count = 0
+        ask_new_question = False  # Initialize the flag
+
+        # Loop through the output and check the number of keywords found in the parsed input
+        for intent_name, keywords in self.output.items():
+            keyword_count = 0
+            for keyword in keywords:
+                if keyword in [token.lemma_ for token in doc]:
+                    keyword_count += 1
+            highest_keyword_count = max(keyword_count, highest_keyword_count)
+            if keyword_count == highest_keyword_count:
+                most_similar_response = responses[intent_name]
+        
+        if highest_keyword_count >= 2 and most_similar_response is not None:
+            print("Intent response")
+            print(highest_keyword_count)
+            print([token.lemma_ for token in doc])
+            # Return the response and a true false based on keywords found indicating that a new question should be asked
+            ask_new_question = True
+            return (most_similar_response, ask_new_question)
+        
+        # if no similarity found generate gpt2 answer
+        if highest_keyword_count == 1 and most_similar_response is not None: 
+            print("Similarity response generated gpt3")
+            response = self.generate_response(most_similar_response)
+            ask_new_question = True
+            return (response, ask_new_question)
+    
+        #if can't do it call the no match function 
+        if highest_keyword_count == 0:
+            response = self.no_match()
+            ask_new_question = False
+            return (response, ask_new_question)
+    
+    # Use the GPT-2 model to generate a response using fine tune model davinci OR curie
+    def generate_response(self, reply):
+        message = openai.Completion.create(
+            #model="davinci:ft-personal-2023-01-17-01-22-12", 
+            model="curie:ft-personal-2023-01-18-22-17-11",
+            prompt=f"{reply}",
+            max_tokens=25, 
+            n=1, 
+            stop = "END",
+            top=0.1, 
+            temperature=0.5).choices[0].text
+        return message
+
+Chatbot = SolarSalesBot()
+Chatbot.greet()

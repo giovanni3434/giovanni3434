@@ -1,0 +1,1322 @@
+{
+  "describe_benefits": [
+    "benefit",
+    "advantage",
+    "pro",
+    "tax"
+  ],
+  "describe_savings": [
+    "save",
+    "cost",
+    "money"
+  ],
+  "describe_technology": [
+    "technology",
+    "tech",
+    "photovoltaic"
+  ],
+  "answer_why_switch": [
+    "switch",
+    "change",
+    "why",
+    "switch"
+  ],
+  "describe_maintenance": [
+    "maintenance",
+    "duration"
+  ],
+  "describe_aesthetics": [
+    "look",
+    "aesthetic"
+  ],
+  "describe_property_value": [
+    "property",
+    "value"
+  ],
+  "describe_environmental_benefits": [
+    "environmental",
+    "environment",
+    "planet",
+    "sustainable"
+  ],
+  "greetings": [
+    "thank",
+    "bye",
+    "ok"
+  ],
+  "solar_system_works": [
+    "work",
+    "generate",
+    "electricity",
+    "power",
+    "produce",
+    "how",
+    "solar",
+    "panel",
+    "renewable",
+    "energy"
+  ],
+  "solar_system_turned_on": [
+    "solar",
+    "system",
+    "activate",
+    "ready",
+    "for",
+    "use",
+    "turn",
+    "on"
+  ],
+  "solar_system_installation": [
+    "equipment",
+    "solar",
+    "system",
+    "component",
+    "install"
+  ],
+  "permissions_to_operate": [
+    "permission",
+    "connect",
+    "interconnection",
+    "pto",
+    "grid"
+  ],
+  "help_with_questions": [
+    "help",
+    "question",
+    "who",
+    "assist",
+    "support",
+    "aid",
+    "answer",
+    "information",
+    "advice"
+  ],
+  "during_an_installation": [
+    "installation",
+    "happen",
+    "during",
+    "step",
+    "process",
+    "procedure"
+  ],
+  "roof_during_installation": [
+    "roof",
+    "solar",
+    "panel",
+    "instal",
+    "install",
+    "impact"
+  ],
+  "parts_of_a_solar_system": [
+    "solar",
+    "system",
+    "instal",
+    "part",
+    "part",
+    "component",
+    "include"
+  ],
+  "how_long_installation": [
+    "installation",
+    "time",
+    "usually",
+    "take",
+    "long",
+    "duration"
+  ],
+  "HOA_members": [
+    "hoa",
+    "need",
+    "know",
+    "inform",
+    "notify",
+    "approval"
+  ],
+  "turning_on_system": [
+    "solar",
+    "system",
+    "turn",
+    "on",
+    "happen",
+    "after",
+    "activate",
+    "start"
+  ],
+  "kWh_is": [
+    "kwh",
+    "be",
+    "production",
+    "energy",
+    "electricity",
+    "unit",
+    "measure"
+  ],
+  "cloudy_days": [
+    "solar",
+    "panel",
+    "work",
+    "cloudy",
+    "cloud",
+    "bad",
+    "weather",
+    "production",
+    "less",
+    "output"
+  ],
+  "winter_days": [
+    "solar",
+    "panel",
+    "work",
+    "winter",
+    "production",
+    "efficiency"
+  ],
+  "night_time": [
+    "solar",
+    "panel",
+    "work",
+    "night",
+    "night",
+    "time",
+    "storage",
+    "battery"
+  ],
+  "during_blackout": [
+    "blackout",
+    "happen",
+    "during",
+    "battery",
+    "energy",
+    "storage",
+    "backup"
+  ],
+  "trees_shade_performance": [
+    "tree",
+    "shade",
+    "impact",
+    "solar",
+    "performance",
+    "efficiency"
+  ],
+  "25_years": [
+    "solar",
+    "system",
+    "work",
+    "well",
+    "25",
+    "year",
+    "life",
+    "end",
+    "durability"
+  ],
+  "enough_power": [
+    "solar",
+    "panel",
+    "do",
+    "not",
+    "produce",
+    "enough",
+    "output",
+    "capacity"
+  ],
+  "producing_energy": [
+    "solar",
+    "system",
+    "produce",
+    "energy",
+    "know",
+    "power",
+    "generation"
+  ],
+  "care_for_solar": [
+    "solar",
+    "panel",
+    "care",
+    "for",
+    "clean",
+    "ppa",
+    "lease",
+    "maintenance"
+  ],
+  "questions_concerns": [
+    "reach",
+    "out",
+    "question",
+    "concern",
+    "customer",
+    "contact",
+    "lease",
+    "customer",
+    "service",
+    "support"
+  ],
+  "Sunrun_monitors": [
+    "sunrun",
+    "monitor",
+    "system",
+    "technician",
+    "ppa",
+    "monitor",
+    "maintenance"
+  ],
+  "system_breaks": [
+    "system",
+    "break",
+    "not",
+    "work",
+    "problem",
+    "troubleshoot",
+    "repair"
+  ],
+  "system_warranty": [
+    "solar",
+    "system",
+    "warranty",
+    "home",
+    "ppa",
+    "lease",
+    "coverage",
+    "guarantee"
+  ],
+  "Sunrun_Guarantee": [
+    "sunrun",
+    "guarantee",
+    "what",
+    "ppa",
+    "lease",
+    "coverage",
+    "protection"
+  ],
+  "own_care_panels": [
+    "solar",
+    "panel",
+    "care",
+    "own",
+    "purchase",
+    "ownership",
+    "own",
+    "system",
+    "maintenance"
+  ],
+  "contact_own": [
+    "reach",
+    "out",
+    "question",
+    "concern",
+    "own",
+    "purchase",
+    "ownership",
+    "own",
+    "system",
+    "customer",
+    "service"
+  ],
+  "breaks_working": [
+    "system",
+    "break",
+    "not",
+    "work",
+    "own",
+    "purchase",
+    "ownership",
+    "own",
+    "system",
+    "troubleshoot",
+    "repair"
+  ],
+  "warranty": [
+    "solar",
+    "system",
+    "warranty",
+    "home",
+    "own",
+    "purchase",
+    "ownership",
+    "own",
+    "system",
+    "coverage",
+    "guarantee"
+  ],
+  "zero_production": [
+    "monitor",
+    "production",
+    "zero",
+    "kilowatt",
+    "own",
+    "purchase",
+    "ownership",
+    "own",
+    "system",
+    "output",
+    "generation"
+  ],
+  "data_doesn't_match": [
+    "mysurun",
+    "production",
+    "datum",
+    "meter",
+    "inverter",
+    "app",
+    "discrepancy",
+    "mismatch"
+  ],
+  "inverter_display": [
+    "inverter",
+    "display",
+    "read",
+    "error",
+    "reset",
+    "troubleshoot",
+    "code"
+  ],
+  "meter_display": [
+    "meter",
+    "display",
+    "read",
+    "troubleshoot"
+  ],
+  "added_systems": [
+    "solar",
+    "system",
+    "panel",
+    "add",
+    "more",
+    "expand"
+  ],
+  "brightbox_system": [
+    "brightbox",
+    "solar",
+    "system",
+    "add",
+    "battery",
+    "storage"
+  ],
+  "roof_replaced": [
+    "roof",
+    "replace",
+    "need",
+    "change",
+    "new",
+    "new",
+    "roof",
+    "repair",
+    "installation"
+  ],
+  "nesting_solar": [
+    "animal",
+    "nest",
+    "prevent",
+    "under",
+    "bird",
+    "pigeon",
+    "prevention"
+  ],
+  "snow_guards": [
+    "sunrun",
+    "snow",
+    "guard",
+    "install",
+    "installation"
+  ],
+  "when_moving": [
+    "move",
+    "happen",
+    "when",
+    "owner",
+    "new",
+    "trasfere",
+    "transfer",
+    "ownership"
+  ],
+  "monthly_bill": [
+    "pay",
+    "bill",
+    "upfront",
+    "when",
+    "sunrun",
+    "utility",
+    "payment",
+    "schedule"
+  ],
+  "autopay_works": [
+    "autopay",
+    "sunrun",
+    "work",
+    "pay",
+    "cancel",
+    "fee",
+    "automatic",
+    "enrollment"
+  ],
+  "ACH_is": [
+    "ach",
+    "non",
+    "-",
+    "compliance",
+    "charge",
+    "bill",
+    "bank",
+    "account"
+  ],
+  "Sunrun_bill_up": [
+    "sunrun",
+    "bill",
+    "go",
+    "up",
+    "increase",
+    "explanation"
+  ],
+  "pay_invoice": [
+    "sunrun",
+    "invoice",
+    "pay",
+    "monthly",
+    "account",
+    "check",
+    "method"
+  ],
+  "outstanding_balance": [
+    "outstanding",
+    "balance",
+    "check",
+    "current",
+    "amount"
+  ],
+  "paper_paperless_billing": [
+    "paper",
+    "paperless",
+    "billing",
+    "switch",
+    "preference"
+  ],
+  "prepay_electricity": [
+    "prepay",
+    "electricity",
+    "how",
+    "pay",
+    "change",
+    "option"
+  ],
+  "deposit_upfront": [
+    "pay",
+    "deposit",
+    "upfront",
+    "payment",
+    "purchase",
+    "amount"
+  ],
+  "payment_due": [
+    "purchase",
+    "payment",
+    "due",
+    "when",
+    "prepay",
+    "billing",
+    "schedule"
+  ],
+  "utility_still_received": [
+    "utility",
+    "bill",
+    "?",
+    "be",
+    "still",
+    "receive",
+    "why",
+    "explanation"
+  ],
+  "bill_after_solar": [
+    "utility",
+    "bill",
+    "different",
+    "solar",
+    "now",
+    "why",
+    "change"
+  ],
+  "solar_stats_utility": [
+    "solar",
+    "stat",
+    "utility",
+    "bill",
+    "match",
+    "mysunrun",
+    "mismatch"
+  ],
+  "bill_higher": [
+    "utility",
+    "bill",
+    "higher",
+    "than",
+    "expect",
+    "explanation"
+  ],
+  "shrink_bill": [
+    "utility",
+    "bill",
+    "shrink",
+    "how",
+    "save",
+    "eliminate",
+    "lower"
+  ],
+  "true-up": [
+    "true",
+    "-",
+    "up",
+    "bill",
+    "what",
+    "be",
+    "explanation"
+  ],
+  "sign_in": [
+    "sign",
+    "in",
+    "login",
+    "access",
+    "app",
+    "mysunrun"
+  ],
+  "verification_not_received": [
+    "verification",
+    "code",
+    "not",
+    "receive",
+    "miss",
+    "email",
+    "phone"
+  ],
+  "find_agreement": [
+    "agreement",
+    "contract",
+    "document",
+    "location",
+    "where"
+  ],
+  "find_information": [
+    "system",
+    "design",
+    "component",
+    "information",
+    "detail",
+    "account"
+  ],
+  "energy_production": [
+    "energy",
+    "production",
+    "generation",
+    "usage",
+    "consumption",
+    "account"
+  ],
+  "energy_produced": [
+    "energy",
+    "production",
+    "generation",
+    "update",
+    "time",
+    "frequency"
+  ],
+  "data_exported": [
+    "datum",
+    "export",
+    "export",
+    "datum",
+    "stat",
+    "statistic",
+    "download"
+  ],
+  "battery": [
+    "battery",
+    "status",
+    "capacity",
+    "performance",
+    "function",
+    "what"
+  ],
+  "owed": [
+    "owe",
+    "much",
+    "do",
+    "how",
+    "billing",
+    "debt",
+    "balance",
+    "amount",
+    "due"
+  ],
+  "how_to_pay": [
+    "pay",
+    "how",
+    "do",
+    "billing",
+    "credit",
+    "method",
+    "online",
+    "by",
+    "phone",
+    "by",
+    "mail"
+  ],
+  "autopay": [
+    "autopay",
+    "set",
+    "up",
+    "how",
+    "billing",
+    "automatic",
+    "payment",
+    "recur",
+    "payment"
+  ],
+  "old_transactions": [
+    "old",
+    "bill",
+    "transaction",
+    "see",
+    "bill",
+    "past",
+    "history",
+    "previous"
+  ],
+  "paperless": [
+    "paperless",
+    "go",
+    "how",
+    "electronic",
+    "billing",
+    "e",
+    "-",
+    "billing"
+  ],
+  "update_information": [
+    "mysunrun",
+    "password",
+    "contact",
+    "update",
+    "costco",
+    "email",
+    "phone",
+    "number",
+    "billing",
+    "address"
+  ],
+  "bill_after": [
+    "utility",
+    "bill",
+    "solar",
+    "read",
+    "switch",
+    "costco",
+    "understand",
+    "interpret"
+  ],
+  "Costco_Cash_Card": [
+    "costco",
+    "cash",
+    "card",
+    "amount",
+    "calculate",
+    "arrive",
+    "when",
+    "costco",
+    "receive"
+  ],
+  "solar_problem": [
+    "solar",
+    "system",
+    "work",
+    "problem",
+    "think",
+    "costco",
+    "troubleshoot",
+    "diagnose",
+    "issue"
+  ],
+  "switching_good": [
+    "solar",
+    "switch",
+    "why",
+    "should",
+    "benefit",
+    "advantage",
+    "reason"
+  ],
+  "home_suitable_for_solar": [
+    "home",
+    "good",
+    "solar",
+    "be",
+    "qualify",
+    "go",
+    "suitable",
+    "eligible",
+    "feasible"
+  ],
+  "number_of_solar_panels_needed": [
+    "solar",
+    "panel",
+    "home",
+    "need",
+    "many",
+    "number",
+    "calculate",
+    "estimate"
+  ],
+  "power_needed": [
+    "power",
+    "need",
+    "much",
+    "bill",
+    "graph",
+    "usage",
+    "consumption",
+    "history"
+  ],
+  "customise": [
+    "design",
+    "panel",
+    "many",
+    "consultant",
+    "need",
+    "customize",
+    "tailor",
+    "personalize"
+  ],
+  "after_solar": [
+    "notice",
+    "anything",
+    "after",
+    "solar",
+    "go",
+    "different",
+    "impact",
+    "effect"
+  ],
+  "incentives_solar": [
+    "state",
+    "offer",
+    "incentive",
+    "solar",
+    "go",
+    "rebate",
+    "subsidy",
+    "tax",
+    "credit"
+  ],
+  "increase_home_value": [
+    "solar",
+    "panel",
+    "home",
+    "value",
+    "increase",
+    "appraise",
+    "appreciation",
+    "worth"
+  ],
+  "questions": [
+    "question",
+    "help",
+    "will",
+    "who",
+    "installation",
+    "support",
+    "assistance"
+  ],
+  "during_installation": [
+    "installation",
+    "happen",
+    "during",
+    "what",
+    "crew",
+    "procedure",
+    "step"
+  ],
+  "roof_after": [
+    "roof",
+    "solar",
+    "panel",
+    "instal",
+    "happen",
+    "condition",
+    "appearance"
+  ],
+  "components": [
+    "solar",
+    "system",
+    "instal",
+    "part",
+    "what",
+    "component",
+    "equipment",
+    "device"
+  ],
+  "installation_time": [
+    "installation",
+    "usually",
+    "take",
+    "long",
+    "time",
+    "duration"
+  ],
+  "HOA_member": [
+    "hoa",
+    "member",
+    "need",
+    "know",
+    "permission",
+    "approval"
+  ],
+  "turning_system": [
+    "solar",
+    "system",
+    "on",
+    "turn",
+    "happen",
+    "activate",
+    "startup"
+  ],
+  "added_system": [
+    "panel",
+    "add",
+    "can",
+    "more",
+    "second",
+    "system",
+    "expand",
+    "augment",
+    "increase"
+  ],
+  "blackout": [
+    "blackout",
+    "happen",
+    "during",
+    "what",
+    "backup",
+    "outage",
+    "emergency",
+    "power",
+    "failure"
+  ],
+  "generator_battery_together": [
+    "generator",
+    "sunrun",
+    "brightbox",
+    "battery",
+    "can",
+    "have",
+    "use",
+    "together",
+    "combine"
+  ],
+  "off the grid": [
+    "brightbox",
+    "off",
+    "the",
+    "grid",
+    "allow",
+    "do",
+    "possible",
+    "self",
+    "-",
+    "sufficient",
+    "independent"
+  ],
+  "solar_panels_and_Brightbox": [
+    "solar",
+    "panel",
+    "brightbox",
+    "use",
+    "need",
+    "require",
+    "necessary"
+  ],
+  "batteries_needed": [
+    "brightbox",
+    "solar",
+    "battery",
+    "house",
+    "power",
+    "how",
+    "many",
+    "sufficient",
+    "adequate"
+  ],
+  "battery_placed": [
+    "brightbox",
+    "where",
+    "will",
+    "be",
+    "place",
+    "battery",
+    "location",
+    "install"
+  ],
+  "setup_maintenance_Brightbox": [
+    "brightbox",
+    "setup",
+    "maintenance",
+    "need",
+    "do",
+    "require",
+    "procedure",
+    "care"
+  ],
+  "lease_or_buy": [
+    "well",
+    "lease",
+    "buy",
+    "solar",
+    "panel",
+    "option",
+    "financing",
+    "option",
+    "compare",
+    "difference",
+    "advantage"
+  ],
+  "lease_PPA?": [
+    "solar",
+    "lease",
+    "ppa",
+    "what",
+    "rent",
+    "option",
+    "agreement",
+    "contract",
+    "term"
+  ],
+  "$0_down": [
+    "solar",
+    "little",
+    "$",
+    "0",
+    "down",
+    "qualify",
+    "affordable",
+    "low",
+    "cost",
+    "budget",
+    "-",
+    "friendly"
+  ],
+  "prepaid_lease": [
+    "prepay",
+    "solar",
+    "lease",
+    "work",
+    "how",
+    "payment",
+    "term",
+    "structure"
+  ],
+  "cost_purchasing": [
+    "own",
+    "solar",
+    "panel",
+    "increase",
+    "home",
+    "value",
+    "worth",
+    "investment",
+    "return"
+  ],
+  "value_home": [
+    "solar",
+    "system",
+    "purchase",
+    "work",
+    "home",
+    "value",
+    "worth",
+    "investment",
+    "return"
+  ],
+  "buy_panels": [
+    "well",
+    "lease",
+    "buy",
+    "solar",
+    "panel",
+    "investment",
+    "cost",
+    "long",
+    "-",
+    "term"
+  ],
+  "financing": [
+    "benefit",
+    "home",
+    "solar",
+    "financing",
+    "purchase",
+    "loan",
+    "mortgage",
+    "credit"
+  ],
+  "tax_deductible": [
+    "solar",
+    "loan",
+    "tax",
+    "deductible",
+    "qualify",
+    "incentive",
+    "government",
+    "purchase",
+    "incentive",
+    "rebate",
+    "credit"
+  ],
+  "Sunrun_solar": [
+    "make",
+    "sunrun",
+    "good",
+    "choice",
+    "home",
+    "solar",
+    "why",
+    "feature",
+    "benefit"
+  ],
+  "Sunrun_companies": [
+    "do",
+    "sunrun",
+    "compare",
+    "other",
+    "solar",
+    "company",
+    "compare",
+    "difference",
+    "advantage"
+  ],
+  "Sunrun_partners": [
+    "hear",
+    "sunrun",
+    "through",
+    "another",
+    "solar",
+    "company",
+    "do",
+    "sunrun",
+    "work",
+    "partner",
+    "collaboration",
+    "affiliate",
+    "referral"
+  ],
+  "care_panels": [
+    "solar",
+    "panel",
+    "care",
+    "how",
+    "purchase",
+    "own",
+    "maintenance",
+    "clean",
+    "inspection"
+  ],
+  "concerns": [
+    "question",
+    "concern",
+    "reach",
+    "who",
+    "purchase",
+    "own",
+    "contact",
+    "support",
+    "service"
+  ],
+  "breaks": [
+    "solar",
+    "system",
+    "break",
+    "do",
+    "not",
+    "work",
+    "expect",
+    "happen",
+    "purchase",
+    "repair",
+    "replacement",
+    "maintenance"
+  ],
+  "warranty_1": [
+    "home",
+    "solar",
+    "system",
+    "warranty",
+    "have",
+    "purchase",
+    "my",
+    "coverage",
+    "term",
+    "condition"
+  ],
+  "cost_control": [
+    "flat",
+    "rate",
+    "cost",
+    "control",
+    "bill",
+    "predictable",
+    "stable",
+    "budget"
+  ],
+  "savings": [
+    "saving",
+    "cost",
+    "how",
+    "qualify",
+    "quote",
+    "bill",
+    "cost",
+    "return",
+    "on",
+    "investment",
+    "payback",
+    "period"
+  ],
+  "rolling_blackouts": [
+    "roll",
+    "\"",
+    ",",
+    "\"",
+    "blackout",
+    "prepare",
+    "how",
+    "outage",
+    "emergency",
+    "backup"
+  ],
+  "net_metering": [
+    "net",
+    "metering",
+    "what",
+    "be",
+    "credit",
+    "money",
+    "back",
+    "pay",
+    "utility",
+    "billing",
+    "excess"
+  ],
+  "credits": [
+    "utility",
+    "credit",
+    "receive",
+    "sunrun",
+    "will",
+    "nem",
+    "utility",
+    "billing",
+    "rebate"
+  ],
+  "utility_rates": [
+    "tiere",
+    "utility",
+    "rate",
+    "nem",
+    "billing",
+    "cost",
+    "saving"
+  ],
+  "(TOU)": [
+    "time",
+    "of",
+    "use",
+    "tou",
+    "what",
+    "bill",
+    "credit",
+    "utility",
+    "peak",
+    "off",
+    "-",
+    "peak",
+    "demand"
+  ],
+  "environmental_impact": [
+    "environmental",
+    "impact",
+    "solar",
+    "what",
+    "be",
+    "carbon",
+    "emission",
+    "sustainability"
+  ],
+  "community": [
+    "solar",
+    "community",
+    "help",
+    "how",
+    "impact",
+    "green",
+    "energy",
+    "reduce",
+    "dependence",
+    "renewable"
+  ],
+  "give_back": [
+    "sunrun",
+    "give",
+    "back",
+    "what",
+    "impact",
+    "charity",
+    "donation",
+    "corporate",
+    "responsibility"
+  ],
+  "agreement_changed": [
+    "agreement",
+    "type",
+    "change",
+    "can",
+    "how",
+    "contract",
+    "term",
+    "modify"
+  ],
+  "insurance_system": [
+    "insurance",
+    "sunrun",
+    "system",
+    "buy",
+    "should",
+    "coverage",
+    "protection",
+    "risk"
+  ],
+  "tax_credits": [
+    "solar",
+    "tax",
+    "credit",
+    "what",
+    "deal",
+    "incentive",
+    "rebate",
+    "deduction"
+  ],
+  "end_lease_agreement": [
+    "sunrun",
+    "lease",
+    "agreement",
+    "end",
+    "happen",
+    "what",
+    "extend",
+    "renew",
+    "buyout"
+  ],
+  "move": [
+    "move",
+    "decide",
+    "happen",
+    "what",
+    "sell",
+    "house",
+    "transfer",
+    "relocate"
+  ]
+}

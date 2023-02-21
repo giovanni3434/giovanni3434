@@ -1,0 +1,46 @@
+import matplotlib.pyplot as plt
+
+def solar_savings():
+    # Get input from the user
+    cost_of_solar = float(input("Enter the cost of the solar panel system (in dollars per kWh): "))
+    years_with_solar = int(input("Enter the number of years to consider: "))
+    energy_usage = int(input("Enter the monthly energy usage (in kWh): "))
+    month_of_year = int(input("Enter the month of the year (1-12): "))
+
+    local_power_rate = 0.30  # Set the local power rate at 30 cents per kWh
+    savings = []
+    months_range = range(years_with_solar * 12)  # Calculate savings for the specified number of years with 12 months per year
+
+    for month in months_range:
+        # Calculate the cost of electricity from the local power company
+        local_cost = local_power_rate * energy_usage
+
+        # Increase the local power rate by 5% starting in year 1
+        if month >= 12:
+            local_power_rate += local_power_rate * 0.05
+
+        # Calculate the cost of electricity with solar
+        solar_cost = cost_of_solar * energy_usage
+
+        # Calculate the savings for this month
+        month_savings = local_cost - solar_cost
+        savings.append(month_savings)
+
+    # Calculate the total savings
+    total_savings = sum(savings)
+
+    # Plot the savings over time
+    plt.plot(months_range, savings)
+    plt.xlabel('Month')
+    plt.ylabel('Savings (USD)')
+    plt.title('Savings from Solar Over Time')
+    plt.show()
+
+    # Print the total savings
+    print(f'Total savings: ${total_savings:.2f}')
+
+    # Print the savings for the specified month
+    print(f'Savings for month {month_of_year}: ${savings[month_of_year - 1]:.2f}')
+
+# Call the function
+solar_savings()

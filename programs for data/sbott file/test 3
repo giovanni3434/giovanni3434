@@ -1,0 +1,146 @@
+import re
+import json
+import random
+import nltk
+import spacy
+# nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
+#nltk.download("averaged_perceptron_tagger")
+import transformers
+import openai
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Import the WordNet module
+from nltk.corpus import wordnet as wn
+
+openai.api_key = "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"
+
+class SolarSalesBot:
+    def __init__(self):
+        with open('intents.json', 'r') as f1, open('prompts.json', 'r') as f2, open("responses.json", "r") as f3:
+            intents, prompts = json.load(f1), json.load(f2)
+
+
+        # Extract the data from the JSON files (intents.json , prompts.json)
+        self.intents = {intent_name: keywords for intent_name,
+                        keywords in intents.items()}
+        self.solar_energy_prompt = prompts["solar_energy_prompts"]
+
+        self.lemmatizer = nltk.WordNetLemmatizer()
+        self.stopwords = nltk.corpus.stopwords.words('english')
+        
+        self.negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
+        self.exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later")
+        self.random_questions = ("Why are you interested in solar? ", "Tell me more about your interests in solar, benefits, tech, etc ")
+
+        # Load the GPT-2 model and tokenizer
+        self.model = GPT2LMHeadModel.from_pretrained('gpt2')
+        self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+
+    def greet(self):
+        name = input("Hi, what's your name?")
+        will_help = input(f"Hi {name}, I'm Sbott. I'm your solar consultant. Do you need help to go Solar?")
+        if will_help.lower() in self.negative_responses or will_help.lower() in self.exit_commands:
+            print("Ok, have a nice day!")
+            return
+
+        is_homeowner = input("Are you a homeowner? ").lower()
+        if not re.search(r'(?:yes|y(?:eah)?)', is_homeowner):
+            print("We are sorry, you broke fuck!")
+            return
+        
+        #self.solar_data()
+        self.chat()
+
+    def make_exit(self, reply):
+        for exit_command in self.exit_commands:
+            if reply == exit_command:
+                print("Ok, have a nice day!")
+                return True
+        return False
+
+    def chat(self):
+        reply = input(random.choice(self.random_questions)).lower()
+        while not self.make_exit(reply):
+            reply = input(self.match_reply(reply))
+
+    def match_reply(self, reply):
+        # Load the spaCy model lg (we can use model md too)
+        nlp = spacy.load("en_core_web_lg")
+        # Parse the user's input
+        doc = nlp(reply)
+
+        # Read the responses from the responses.json file
+        with open("responses.json", "r") as f:
+            responses = json.load(f)
+
+        # Loop through the intents and check if any of the keywords appear in the parsed input
+        for intent_name, keywords in self.intents.items():
+            for keyword in keywords:
+                if keyword in [token.lemma_ for token in doc]:
+                    response = responses[intent_name]
+                    if isinstance(response, tuple):
+                        return random.choice(response)
+                    return response
+
+        # Extract concepts from the parsed input
+        concepts = self.extract_concepts(reply)
+
+        # Calculate the similarity between the concepts and the responses
+        most_similar_response = None
+        highest_similarity = 0
+        for intent_name, keywords in self.intents.items():
+            response = responses[intent_name]
+            # if the question and ansewers were a tuple but not really useful now
+            if isinstance(response, tuple):
+                response = random.choice(response)
+            similarity = self.calculate_similarity(concepts, response)
+            if similarity > highest_similarity:
+                most_similar_response = response
+                highest_similarity = similarity
+
+        # if no similarity found generate gpt2 answer 
+        if most_similar_response is not None:
+            response = self.generate_response(most_similar_response)
+            return response
+
+        #if can't do it call the no match function 
+        response = self.no_match(reply)
+        return response
+
+    def no_match(self, input):
+        print("It is interesting you are mentioning that, but how about we stick with solar and save you money?")
+        return self.chat()
+    
+    # modified version compare to final 01-01-2023 using spacy istead of nklt
+    def extract_concepts(self, reply):
+        nlp = spacy.load("en_core_web_lg")
+        doc = nlp(reply)
+        concepts = []
+        for entity in doc.ents:
+            concepts.append(entity.text)
+        return concepts
+
+    def calculate_similarity(self, concepts, response):
+        response_concepts = self.extract_concepts(response)
+        similarity = 0
+        for concept in concepts:
+            if concept in response_concepts:
+                similarity += 1
+        return similarity
+ 
+    # Use the GPT-2 model to generate a response
+    def generate_response(self, reply):
+        message = openai.Completion.create(
+            engine="text-davinci-002", prompt=f"{reply}\n{self.solar_energy_prompt}", max_tokens=250, n=1, stop=None, temperature=0.5).choices[0].text
+        return message
+
+
+Chatbot = SolarSalesBot()
+Chatbot.greet()

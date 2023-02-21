@@ -1,0 +1,41 @@
+import json
+
+def compare_intents(file1, file2):
+  # Load the JSON files
+  with open(file1, 'r') as f1:
+    data1 = json.load(f1)
+  with open(file2, 'r') as f2:
+    data2 = json.load(f2)
+
+  # Initialize a list to store the differences
+  differences = []
+
+  # Extract the list of intents from the first file
+  intents1 = list(data1.keys())
+  # Extract the list of intents from the second file
+  intents2 = list(data2.keys())
+
+  # Compare the intents in the two files
+  for i, (intent1, intent2) in enumerate(zip(intents1, intents2)):
+    # If the intent names are different, add to the list
+    if intent1 != intent2:
+      differences.append(f'Intent names differ at line {i}: {intent1} vs {intent2}')
+
+  # Check for missing intents in the first file
+  for i, intent in enumerate(intents1):
+    if intent not in intents2:
+      differences.append(f'Intent missing in file 2: {intent}')
+
+  # Check for missing intents in the second file
+  for i, intent in enumerate(intents2):
+    if intent not in intents1:
+      differences.append(f'Intent missing in file 1: {intent}')
+
+  # Return the list of differences
+  return differences
+
+# Example usage
+differences = compare_intents('intents.json', 'responses.json')
+print(differences)
+
+

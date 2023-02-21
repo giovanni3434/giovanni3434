@@ -1,0 +1,116 @@
+import re
+import json
+import random
+import nltk
+#nltk.download('stopwords')
+#nltk.download('punkt')
+#nltk.download('wordnet')
+#nltk.download('omw-1.4')
+import transformers
+import openai
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+openai.api_key = "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"
+
+
+class SolarSalesBot:
+    def __init__(self):
+        self.lemmatizer = nltk.WordNetLemmatizer()
+        self.stopwords = nltk.corpus.stopwords.words('english')
+        self.intents = {'describe_benefits': ['benefit', 'advantage', 'pros'],
+                        'describe_savings': ['saving', 'save', 'cost'],
+                        }
+        self.negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
+        self.exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later")
+        self.random_questions = (
+            "Why are you interested in solar? ",
+            "Tell me more about your interests in solar, benefits, tech, etc ")
+        self.solar_energy_prompt = "What are the benefits of going solar?"
+        self.questions = [
+            "How much does Solar cost?"
+        ]
+        self.answers = [
+            "Depends on the house."
+        ]
+
+        # Load the GPT-2 model and tokenizer
+        self.model = GPT2LMHeadModel.from_pretrained('gpt2')
+        self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+
+    def greet(self):
+        name = input("Hi, what's your name?")
+        will_help = input(f"Hi {name}, I'm Sbott. I'm your solar consultant. Do you need help to go Solar?")
+        if will_help.lower() in self.negative_responses or will_help.lower() in self.exit_commands:
+            print("Ok, have a nice day!")
+            return
+
+        is_homeowner = input("Are you a homeowner?").lower()
+        if not re.match(r'(?:yes|y(?:eah)?)', is_homeowner):
+            print("We are sorry, you broke fuck!")
+            return
+        self.chat()
+
+    def make_exit(self, reply):
+        for exit_command in self.exit_commands:
+            if reply == exit_command:
+                print("Ok, have a nice day!")
+                return True
+        return False
+
+    def chat(self):
+        reply = input(random.choice(self.random_questions)).lower()
+        while not self.make_exit(reply):
+            reply = input(self.match_reply(reply))
+
+    def match_reply(self, reply):
+        # Tokenize and lemmatize the user's input
+        tokens = nltk.word_tokenize(reply)
+        lemmas = [self.lemmatizer.lemmatize(token) for token in tokens]
+        filtered_lemmas = [lemma for lemma in lemmas if lemma not in self.stopwords]
+
+        # Read the responses from the responses.json file
+        with open("responses.json", "r") as f:
+            responses = json.load(f)
+
+        for intent, keywords in self.intents.items():
+            if any(keyword in filtered_lemmas for keyword in keywords):
+                response = responses[intent]
+                if isinstance(response, tuple):
+                    return random.choice(response)
+                return response
+
+        # If no match is found, use the GPT-2 model to generate a response
+        response = self.generate_response(reply)
+        if response:
+            return response
+
+        # Return a default response if the GPT-2 model is unable to generate a response
+        return self.prob_intent(reply)
+
+    def prob_intent(self, reply):
+        # Vectorize the user's reply and the questions
+        vectorizer = TfidfVectorizer()
+        user_vec = vectorizer.fit_transform([reply])
+        questions_vec = vectorizer.transform(self.questions)
+
+        # Calculate the cosine similarity between the user's reply and the questions
+        similarity = cosine_similarity(user_vec, questions_vec)
+
+        # Get the index of the question with the highest similarity score
+        most_similar_index = similarity.argmax()
+
+        # Return the answer to the most similar question
+        return self.answers[most_similar_index]
+    
+    # Use the GPT-2 model to generate a responses
+    def generate_response(self, reply):
+        message = openai.Completion.create(engine="text-davinci-002", prompt=f"{reply}\n{self.solar_energy_prompt}", max_tokens=250, n=1,stop=None,temperature=0.5).choices[0].text
+        return message
+
+
+Chatbot = SolarSalesBot()
+Chatbot.greet()

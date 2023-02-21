@@ -1,0 +1,16 @@
+import json
+
+# Load the JSON file
+with open('output.json', 'r') as f:
+    data = json.load(f)
+
+# Iterate through the data
+for intent, keywords in data.items():
+    # Eliminate duplicates within the list of keywords
+    keywords = list(set(keywords))
+    # Update the data with the new list of keywords (without duplicates)
+    data[intent] = keywords
+
+# Save the updated data to the JSON file
+with open('file.json', 'w') as f:
+    json.dump(data, f)

@@ -1,0 +1,32 @@
+import openai
+
+def test_gpt3(prompt, temperature):
+    openai.api_key = "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"
+    response002 = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=prompt,
+        temperature=temperature,
+        max_tokens=100
+    )
+    
+    response003 = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        temperature=temperature,
+        max_tokens=100
+    )
+    print("Temperature:",temperature)
+    print("text-davinci-002 response: " + response002["choices"][0]["text"])
+    print("response length: ",len(response002["choices"][0]["text"].split()))
+    print("\n")
+    print("Temperature:",temperature)
+    print("text-davinci-003 response: " + response003["choices"][0]["text"])
+    print("response length: ",len(response003["choices"][0]["text"].split()))
+    print("\n")
+
+# Example usage:
+temperatures = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]
+for temp in temperatures:
+    test_gpt3("how does solar panels work?",temp)
+
+
